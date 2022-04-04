@@ -1,0 +1,46 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+     steps:
+      -uses: actions/checkout@v3
+      -name: docker login
+    env:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME}}
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD}}
+    run: |
+      docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+      -name: docker build client
+      run: |
+        docker build -f Dockerfile -t client
+      -name: docker build server
+      run: |
+        docker build -f Dockerfile -t server
+      -name: docker build nginx
+       run: |
+        docker build Dockerfile -t Nginx 
+      -name: docker build mysql
+      run: |
+        docker build mysql .
+        -name: docker build adminer 
+        run: |
+        docker build adminer:latest .
+        - name: Generate build number
+      uses: einaregilsson/build-number@v3
+      with:
+       token: ${{secrets.github_token}}
+      -name: docker push
+      run: |
+        docker push docker push sahith26/server:$BUILD_NUMBER
+        docker push docker push sahith26/server:$BUILD_NUMBER
+        docker push docker push sahith26/server:$BUILD_NUMBER
+        docker push docker push sahith26/server:$BUILD_NUMBER
