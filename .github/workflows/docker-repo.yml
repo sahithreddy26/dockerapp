@@ -19,7 +19,7 @@ jobs:
       with:
         token: ${{secrets.github_token}} 
     - name: Build the Docker nginx image
-      run: docker build . --file dockerapp/Nginx/Dockerfile --tag nginx-image-:$(BUILD_NUMBER)
+      run: docker build . --file dockerapp/Nginx/Dockerfile --tag nginx-image:$(BUILD_NUMBER)
     - name: Push docker image nginx to hub
       run: docker tag nginx-image:$BUILD_NUMBER sahith26/server:$BUILD_NUMBER
     - name: Login to DockerHub
