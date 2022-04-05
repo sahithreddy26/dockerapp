@@ -18,4 +18,4 @@ jobs:
     - name: Build the stack
       run: docker-compose up -f docker-compose.yml
     - name: Test
-      run: docker run --add-host "http//localhost:3050:80"
+      run: docker run --add-host 3050:80
