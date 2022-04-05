@@ -19,7 +19,7 @@ jobs:
       with:
         token: ${{secrets.github_token}} 
     - name: Build the Docker image
-      run: docker build . --file docker-compose.yml --tag docker-image:$BUILD_NUMBER
+      run: docker-compose build . --file docker-compose.yml --tag docker-image:$BUILD_NUMBER
     - name: Push docker image docker images to hub
       run: docker --tag docker-image:$BUILD_NUMBER sahith26/server:$BUILD_NUMBER
     - name: Login to DockerHub
