@@ -20,8 +20,8 @@ jobs:
       with:
         token: ${{secrets.github_token}}
     - name: Build the Docker images
-      run: docker build . --file ./docker-compose.yml --tag Doocker-image-name:$BUILD_NUMBER
-    - name: Docker push server image
+      run: docker build . --file ./docker-compose.yml --tag dockerapp:$BUILD_NUMBER
+    - name: Docker push Docker images
       run: docker push sahith26/server:$BUILD_NUMBER
     - name: Login to DockerHub
       uses: docker/login-action@v1 
