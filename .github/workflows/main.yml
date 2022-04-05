@@ -18,4 +18,4 @@ jobs:
     - name: Build the stack
       run: docker-compose up -f docker-compose.yml
     - name: Test
-      run: docker-compose exec
+      run: docker-compose exec -T
