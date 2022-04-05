@@ -18,4 +18,4 @@ jobs:
     - name: Build the stack
       run: docker-compose up -f docker-compose.yml
     - name: Test
-      run: docker run --network container:dockerproject_nginx appropriate/curl -s --retry 10 --retry-connrefused http://localhost:3050/
+      run: docker run --network image:nginx appropriate/curl -s --retry 10 --retry-connrefused http://localhost:3050/
