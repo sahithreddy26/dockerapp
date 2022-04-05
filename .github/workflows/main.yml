@@ -16,6 +16,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
     - name: Build the stack
-      run: docker-compose up -d
+      run: docker-compose up -f docker-compose.yml
     - name: Test
       run: docker run --network container:dockerproject-nginx/curl -s --retry 10 --retry-connrefused http://localhost:3050/
