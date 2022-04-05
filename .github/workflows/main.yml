@@ -18,4 +18,4 @@ jobs:
     - name: Build the stack
       run: docker-compose up -f docker-compose.yml
     - name: Test
-      run: docker run -it -p 3050:80 nginx
+      run: docker-compose exec
