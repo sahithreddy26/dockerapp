@@ -19,19 +19,21 @@ jobs:
       with:
         token: ${{secrets.github_token}}      
     - name: Build the Docker image for Server
-      run: docker build . --file /home/runner/work/dockerapp/dockerapp/server/Dockerfile --tag server-image:$BUILD_NUMBER
+      run: docker build . --file /home/runner/work/dockerapp/dockerapp/server/Dockerfile --tag sahith26/server:$BUILD_NUMBER
     - name: Build the Docker image for Client
-      run: docker build . --file /home/runner/work/dockerapp/dockerapp/client/Dockerfile --tag client-image:$BUILD_NUMBER
+      run: docker build . --file /home/runner/work/dockerapp/dockerapp/client/Dockerfile --tag sahith26/client:$BUILD_NUMBER
     - name: Build the Docker image for Ngnix
-      run: docker build . --file /home/runner/work/dockerapp/dockerapp/Ngnix/Dockerfile --tag nginx-image:$BUILD_NUMBER
-    - name: Push docker image server to hub
-      run: docker tag server-image:$BUILD_NUMBER sahith26/server:$BUILD_NUMBER
-    - name: Push docker image client to hub
-      run: docker tag client-image:$BUILD_NUMBER sahith26/client:$BUILD_NUMBER
-    - name: Push docker image Ngnix to hub
-      run: docker tag Ngnix-image:$BUILD_NUMBER sahith26/nginx:$BUILD_NUMBER
+      run: docker build . --file /home/runner/work/dockerapp/dockerapp/Ngnix/Dockerfile --tag sahith26/nginx:$BUILD_NUMBER
+    #- name: Push docker image server to hub
+    #  run: docker tag server-image:$BUILD_NUMBER sahith26/server:$BUILD_NUMBER
+    #- name: Push docker image client to hub
+    #  run: docker tag client-image:$BUILD_NUMBER sahith26/client:$BUILD_NUMBER
+    #- name: Push docker image Ngnix to hub
+    #  run: docker tag Ngnix-image:$BUILD_NUMBER sahith26/nginx:$BUILD_NUMBER
+    
     - name: List the docker images
       run: docker images
+      
     - name: Login to DockerHub
       uses: docker/login-action@v1 
       with:
