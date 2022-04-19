@@ -24,12 +24,6 @@ jobs:
       run: docker build . --file /home/runner/work/dockerapp/dockerapp/client/Dockerfile --tag sahith26/client:$BUILD_NUMBER
     - name: Build the Docker image for Ngnix
       run: docker build . --file /home/runner/work/dockerapp/dockerapp/Nginx/Dockerfile --tag sahith26/nginx:$BUILD_NUMBER
-    #- name: Push docker image server to hub
-    #  run: docker tag server-image:$BUILD_NUMBER sahith26/server:$BUILD_NUMBER
-    #- name: Push docker image client to hub
-    #  run: docker tag client-image:$BUILD_NUMBER sahith26/client:$BUILD_NUMBER
-    #- name: Push docker image Ngnix to hub
-    #  run: docker tag Ngnix-image:$BUILD_NUMBER sahith26/nginx:$BUILD_NUMBER
     
     - name: List the docker images
       run: docker images
